@@ -2,32 +2,29 @@ import pagination from 'app/components/pagination/pagination';
 import service from 'app/service/server-data-sim';
 
 export default {
+  name: 'reports',
   template: require('./reports.html'),
   data() {
     return {
       loading: false,
-      itemsPerPage: 4,
-      currentPage: 1,
-      totalPages: 0,
+      pageInfo: {
+        page: 1,
+        total: 0,
+        itemsPerPage: 5  
+      },
       items: []
     }
   },
   created() {
     this.loadData();
   },
-  watch: {
-    itemsPerPage() {
-      this.currentPage = 1;
-      this.loadData();
-    }
-  },
   methods: {
     loadData() {
       this.loading = true;
-      service.getItems(this.currentPage, this.itemsPerPage)
+      service.getItems(this.pageInfo.page, this.pageInfo.itemsPerPage)
         .then((data) => {
           this.items = data.content;
-          this.totalPages = data.totalPages;
+          this.pageInfo.total = data.total;
           this.loading = false;
         });
     },
@@ -38,7 +35,12 @@ export default {
       alert('remove');
     },
     onPageChange(page) {
-      this.currentPage = page;
+      this.pageInfo.page = page;
+      this.loadData();
+    },
+    onItemsPerPageChange(itemsPerPage) {
+      this.pageInfo.itemsPerPage = itemsPerPage;
+      this.pageInfo.page = 1; // reset to first page
       this.loadData();
     }
   },

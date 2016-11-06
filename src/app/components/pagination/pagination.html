@@ -1,15 +1,24 @@
+<div class="">
+
+<div v-show="itemsPerPageSelections.length > 0" class="pull-right" style="max-width: 70px;">
+  <select class="form-control" v-model.number="localItemsPerPage">
+    <option v-for="n in itemsPerPageSelections">{{n}}</option>
+  </select>
+</div>
+
 <nav aria-label="Page navigation">
   <ul class="pagination">
-    <li :class="{disabled: currentPage<=1}">
-      <a @click="gotoPage(currentPage-1)" aria-label="Previous">
+    <li :class="{disabled: pgInfo.page<=1}">
+      <a @click="gotoPage(pgInfo.page-1)" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li :class="{active: currentPage==k}"v-for="k in totalPages"><a @click="gotoPage(k)">{{k}}</a></li>
-    <li :class="{disabled: currentPage>=totalPages}">
-      <a @click="gotoPage(currentPage+1)" aria-label="Next">
+    <li :class="{active: pgInfo.page==k}"v-for="k in totalPages"><a @click="gotoPage(k)">{{k}}</a></li>
+    <li :class="{disabled: pgInfo.page>=totalPages}">
+      <a @click="gotoPage(pgInfo.page+1)" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
 </nav>
+</div>

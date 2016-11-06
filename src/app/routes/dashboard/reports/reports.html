@@ -2,9 +2,10 @@
   <sidebar area="dashboard" slot="sidebar"></sidebar>
   <h1> Reports </h1>
   <div class="page-content">
-    <div class="table-responsive">
-      <div class="loading" v-show="loading" style="min-height: 300px"> Loading ... </div>
-      <table v-show="!loading" class="table table-striped" style="min-height: 300px">
+
+    <div class="table-responsive" style="min-height: 300px">
+      <div class="loading" v-show="loading"> Loading ... </div>
+      <table v-show="!loading" class="table table-striped">
         <thead>
           <tr>
             <th>#</th>
@@ -27,16 +28,15 @@
           </tr>
         </tbody>
       </table>
-      <div class="pull-right">
-        <select v-model.number="itemsPerPage">
-          <option> 1 </option>
-          <option> 2 </option>
-          <option> 4 </option>
-          <option> 8 </option>
-          <option> 10 </option>
-        </select>
-      </div>
-      <pagination :total-pages="totalPages" :current-page="currentPage" @page-change="onPageChange($event.page)"></pagination>
     </div>
+
+    <pagination
+      :pg-info="pageInfo"
+      @change-page="onPageChange" 
+      :items-per-page-selections="[1, 2, 5, 10]"
+      @change-items-per-page="onItemsPerPageChange">
+    </pagination>
+    
+
   </div>
 </layout>
