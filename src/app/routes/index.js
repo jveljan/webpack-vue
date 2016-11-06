@@ -1,16 +1,33 @@
-import home from './home/home';
-import about from './about/about';
+import dashboard from './dashboard/dashboard';
+import dashboardReports from './dashboard/reports/reports';
+import settings from './settings/settings';
 
 export default [{
-    path: '/', redirect: '/home'
+    path: '/', redirect: '/dashboard'
   },
   {
-    path: '/home',
-    component: home
+    path: '/dashboard',
+    component: dashboard
   },
   {
-    path: '/about',
-    component: about
+    path: '/dashboard/reports',
+    component: dashboardReports
+  },
+  {
+    path: '/settings',
+    component: settings
+  },
+  {
+    path: '/profile',
+    component: {
+      template: '<layout> Profile </layout>'
+    }
+  },
+  {
+    path: '/help',
+    component: {
+      template: '<layout> Help </layout>'
+    }
   },
   {
     path: '/example',

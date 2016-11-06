@@ -16,9 +16,11 @@ const router = new VueRouter({
 
 // register global components in a mixin...
 import Layout from 'app/components/layout/layout';
+import Sidebar from 'app/components/sidebar/sidebar';
 Vue.mixin({
   components: {
-    layout: Layout
+    layout: Layout,
+    sidebar: Sidebar
   }
 });
 

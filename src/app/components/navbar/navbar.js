@@ -3,11 +3,17 @@ export default {
   data: function() {
     return {
       links: [{
-        title: 'Home',
-        path: '/home'
+        title: 'Dashboard',
+        path: '/dashboard'
       }, {
-        title: 'About',
-        path: '/about'
+        title: 'Settings',
+        path: '/settings'
+      }, {
+        title: 'Profile',
+        path: '/profile'
+      }, {
+        title: 'Help',
+        path: '/help'
       }, {
         title: 'Example',
         path: '/example'
