@@ -2,6 +2,40 @@
   <sidebar area="dashboard" slot="sidebar"></sidebar>
   <h1> Reports </h1>
   <div class="page-content">
-    and here are the reports....
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Color</th>
+            <th>Value</th>
+            <th>...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(it, idx) in items">
+            <td>{{idx+1}}</td>
+            <td>{{it.color}}</td>
+            <td>
+              <div class="sm-box" :style="{backgroundColor: it.value}"></div>
+            </td>
+            <td class="actions">
+              <a class="blue" title="Edit" @click="edit()"><span class="fa fa-edit"></span></a>
+              <a class="red" title="Remove" @click="remove()"><span class="fa fa-remove"></span></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pull-right">
+        <select v-model="itemsPerPage">
+          <option> 1 </option>
+          <option> 2 </option>
+          <option> 4 </option>
+          <option> 8 </option>
+          <option> 10 </option>
+        </select>
+      </div>
+      <pagination :total-pages="totalPages" :current-page="currentPage" @page-change="onPageChange($event.page)"></pagination>
+    </div>
   </div>
 </layout>

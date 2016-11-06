@@ -1,3 +1,37 @@
 body {
   padding-top: 50px;
 }
+a {
+  cursor: pointer
+}
+div.sm-box {
+  width: 15px;
+  height: 15px;
+  border: solid black 1px;
+}
+
+@nice-blue: #369;
+@nice-red: #f22;
+@nice-green: #6b6;
+
+td.actions {
+  font-size: 150%;
+  .red {
+    color: @nice-red;
+    &:hover {
+      color: darken(@nice-red, 20%)
+    }
+  }
+  .blue {
+    color: @nice-blue;
+    &:hover {
+      color: darken(@nice-blue, 20%)
+    }
+  }
+  .green {
+    color: @nice-green;
+    &:hover {
+      color: darken(@nice-green, 20%)
+    }
+  }
+}
