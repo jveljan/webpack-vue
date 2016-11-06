@@ -3,7 +3,8 @@
   <h1> Reports </h1>
   <div class="page-content">
     <div class="table-responsive">
-      <table class="table table-striped">
+      <div class="loading" v-show="loading" style="min-height: 300px"> Loading ... </div>
+      <table v-show="!loading" class="table table-striped" style="min-height: 300px">
         <thead>
           <tr>
             <th>#</th>
@@ -13,8 +14,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(it, idx) in items">
-            <td>{{idx+1}}</td>
+          <tr v-for="it in items">
+            <td>{{it.id}}</td>
             <td>{{it.color}}</td>
             <td>
               <div class="sm-box" :style="{backgroundColor: it.value}"></div>
@@ -27,7 +28,7 @@
         </tbody>
       </table>
       <div class="pull-right">
-        <select v-model="itemsPerPage">
+        <select v-model.number="itemsPerPage">
           <option> 1 </option>
           <option> 2 </option>
           <option> 4 </option>

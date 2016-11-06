@@ -1,25 +1,36 @@
 import pagination from 'app/components/pagination/pagination';
+import service from 'app/service/server-data-sim';
 
 export default {
   template: require('./reports.html'),
   data() {
     return {
+      loading: false,
       itemsPerPage: 4,
-      currentPage: 1
+      currentPage: 1,
+      totalPages: 0,
+      items: []
     }
   },
-  computed: {
-    items() {
-      if(this.currentPage > this.totalPages) {
-        this.currentPage = this.totalPages;
-      }
-      return getItems(this.currentPage, this.itemsPerPage)
-    },
-    totalPages() {
-      return Math.ceil(items.length / this.itemsPerPage);
-    } 
+  created() {
+    this.loadData();
+  },
+  watch: {
+    itemsPerPage() {
+      this.currentPage = 1;
+      this.loadData();
+    }
   },
   methods: {
+    loadData() {
+      this.loading = true;
+      service.getItems(this.currentPage, this.itemsPerPage)
+        .then((data) => {
+          this.items = data.content;
+          this.totalPages = data.totalPages;
+          this.loading = false;
+        });
+    },
     edit() {
       alert('edit');
     },
@@ -28,6 +39,7 @@ export default {
     },
     onPageChange(page) {
       this.currentPage = page;
+      this.loadData();
     }
   },
   components: {
@@ -35,45 +47,3 @@ export default {
   }
 }
 
-
-
-function getItems(page, perPage) {
-  const start = perPage * (page - 1);
-  const end = Math.min(start + perPage, items.length);
-  const rv = [];
-  for(let i=start; i<end; i++) {
-    rv.push(items[i]);
-  }
-  return rv;
-}
-
-const items = [
-  {
-    color: "red",
-    value: "#f00"
-  },
-  {
-    color: "green",
-    value: "#0f0"
-  },
-  {
-    color: "blue",
-    value: "#00f"
-  },
-  {
-    color: "cyan",
-    value: "#0ff"
-  },
-  {
-    color: "magenta",
-    value: "#f0f"
-  },
-  {
-    color: "yellow",
-    value: "#ff0"
-  },
-  {
-    color: "black",
-    value: "#000"
-  }
-];
