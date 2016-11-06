@@ -17,6 +17,7 @@
   ],
 
   "rules": {
-    "no-console": 1 // warning
+    "no-console": 1, // warning
+    "no-debugger": 1
   }
 }

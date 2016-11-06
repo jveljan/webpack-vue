@@ -1,6 +1,7 @@
+
 export default {
   template: require('./navbar.html'),
-  data: function() {
+  data() {
     return {
       links: [{
         title: 'Dashboard',
