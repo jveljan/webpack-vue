@@ -14,7 +14,7 @@ export default {
           totalPages: Math.ceil(items.length / itemsPerPage),
           content: rv
         });
-      }, Math.random() * 1000);
+      }, Math.random() * 500);
     });
   }
 }

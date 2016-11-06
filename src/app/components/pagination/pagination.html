@@ -1,9 +1,12 @@
 <div class="">
 
-<div v-show="itemsPerPageSelections.length > 0" class="pull-right" style="max-width: 70px;">
-  <select class="form-control" v-model.number="localItemsPerPage">
-    <option v-for="n in itemsPerPageSelections">{{n}}</option>
-  </select>
+<div v-show="itemsPerPageSelections.length > 0" class="pull-right form-inline">
+  <div class="form-group">
+    <label for="">Show:</label>
+    <select class="form-control" v-model.number="localItemsPerPage">
+      <option v-for="n in itemsPerPageSelections">{{n}}</option>
+    </select>
+  </div>
 </div>
 
 <nav aria-label="Page navigation">
@@ -21,4 +24,9 @@
     </li>
   </ul>
 </nav>
+
+<div class="text-right lead" style="margin-top: -30px">
+  Total: {{pgInfo.total}} 
+</div>
+
 </div>
