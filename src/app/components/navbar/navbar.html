@@ -14,9 +14,6 @@
         <router-link v-for="link in links" tag="li" :to="link.path" active-class="active">
           <a>{{link.title}}</a>
         </router-link>
-        <li>
-          <a href="#/logout">Logout</a>
-        </li>
       </ul>
       <form class="navbar-form navbar-right">
         <input type="text" class="form-control" placeholder="Search...">

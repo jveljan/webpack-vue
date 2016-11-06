@@ -17,15 +17,22 @@ function requireAuth (to, from, next) {
 
 export default [{
     path: '/login',
-    component: login
-  }, { 
+    component: login,
+    beforeEnter(to, from, next) {
+      if (auth.loggedIn()) {
+        next('/dashboard');
+      } else {
+        next();
+      }
+    }
+  }, {
     path: '/logout',
     beforeEnter (to, from, next) {
       auth.logout();
       next('/login');
     }
   }, {
-    path: '/', 
+    path: '/',
     redirect: '/dashboard'
   },
   {

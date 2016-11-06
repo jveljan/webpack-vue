@@ -18,6 +18,9 @@ export default {
       }, {
         title: 'Example',
         path: '/example'
+      }, {
+        title: 'Logount',
+        path: '/logout'
       }]
     }
   }
