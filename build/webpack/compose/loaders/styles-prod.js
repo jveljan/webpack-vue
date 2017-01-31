@@ -4,11 +4,7 @@ module.exports = () => {
     test: /\.(css|less)$/,
     loaders: ExtractTextPlugin.extract({
       fallbackLoader: 'style-loader',
-      loaders: [
-        'css-loader?minimize',
-        'less-loader',
-        'postcss-loader'
-      ]
+      loader: 'css-loader?minimize!less-loader!postcss-loader'
     })
   };
 }
