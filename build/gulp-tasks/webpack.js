@@ -9,7 +9,7 @@ gulp.task('test', (done) => {
 });
 
 gulp.task('serve', (done) => {
-  require('./serve/server');
+  require('./serve');
   done();
 });
 

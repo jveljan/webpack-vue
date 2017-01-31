@@ -1,6 +1,6 @@
 
 const autoprefixer = require('autoprefixer');
-const paths = require('../paths.conf');
+const paths = require('../conf').path;
 const compose = require('./compose')();
 
 module.exports = {

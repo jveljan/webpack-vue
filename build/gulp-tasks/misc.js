@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const del = require('del');
 const filter = require('gulp-filter');
 
-const paths = require('../paths.conf');
+const paths = require('../conf').path;
 
 gulp.task('clean', clean);
 gulp.task('copy-files', copyStatic);

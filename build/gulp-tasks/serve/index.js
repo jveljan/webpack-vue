@@ -1,23 +1,17 @@
-//TODO: externalize config
-const port = 4044; //TODO: dynamic port
-const enableHotReload = true;
-const enableBrowserAutoOpen = true;
-
-
-const paths = require('../../paths.conf');
+const conf = require('../../conf');
 const webpackConfig = require('../../webpack/webpack-dev.conf');
 const webpack = require('webpack');
 const express = require('express');
 const hr = require('./hot-reload');
 
-if(enableHotReload) {
+if(conf.dev.enableHotReload) {
   hr.adjustConfig(webpackConfig);
 }
 
 const compiler = webpack(webpackConfig);
 const app = express();
 
-if(enableHotReload) {
+if(conf.dev.enableHotReload) {
   app.use(hr.hotMiddleware(compiler));
 }
 
@@ -34,16 +28,16 @@ app.use(devMiddleware)
 // TODO: proxy middleware
 
 
-app.use('/assets/static', express.static(`${paths.root}/${paths.src}/assets/static`));
+app.use('/assets/static', express.static(`${conf.path.root}/${conf.path.src}/assets/static`));
 
-module.exports = app.listen(port, function (err) {
+module.exports = app.listen(conf.dev.port, function (err) {
   if (err) {
     console.log(err)
     return
   }
-  var uri = 'http://localhost:' + port
+  var uri = 'http://localhost:' + conf.dev.port
   console.log('Listening at ' + uri + '\n')
-  if(enableBrowserAutoOpen) {
+  if(conf.dev.enableBrowserAutoOpen) {
     require('opn')(uri);
   }
 })
