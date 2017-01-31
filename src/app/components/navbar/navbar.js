@@ -19,7 +19,7 @@ export default {
         title: 'Example',
         path: '/example'
       }, {
-        title: 'Logount',
+        title: 'Logout',
         path: '/logout'
       }]
     }
