@@ -4,8 +4,8 @@
   "description": "Seed for web project with webpack and gulp",
   "scripts": {
     "test": "gulp test",
-    "serve": "gulp serve",
-    "build": "gulp build"
+    "serve": "node ./build/tasks/serve/index.js",
+    "build": "node ./build/tasks/build.js"
   },
   "author": "Jovica Veljanovski",
   "license": "MIT",
