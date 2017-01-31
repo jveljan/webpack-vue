@@ -19,10 +19,10 @@ module.exports = {
     //compose.plugin('no-errors'),
     compose.plugin('html', paths.src + '/index.html')
   ],
-  debug: false,
-  postcss: () => [autoprefixer],
+  //debug: false,
+  //postcss: () => [autoprefixer],
   resolve: {
-    extensions: ['', '.js', '.ts'],
+    extensions: ['.js', '.ts'],
     alias: {
       assets: `${paths.root}/src/assets`, 
       src: `${paths.root}/src`,

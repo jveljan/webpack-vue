@@ -4,7 +4,7 @@ const compose = require('./compose')();
 const merge = require('webpack-merge');
 const base = require('./webpack-common.conf');
 module.exports = merge(base, {
-  debug: true,
+  //debug: true,
   devtool: 'source-map',
   output: {
     path: path.join(process.cwd(), paths.tmp),
