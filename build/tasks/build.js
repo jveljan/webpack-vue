@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs-extra');
-const paths = require('../conf').path;
+const conf = require('../conf');
+const paths = conf.path;
 
 function copyStatic() {
   console.log(`copy ${src} to ${dest} ...`);
@@ -19,12 +20,8 @@ function compile() {
       if(err.details) console.error(err.details);
       process.exit(1); // eslint-disable-line
     }
-    const outputOptions = {
-        chunks: true,
-        colors: true
-    };
-
-    process.stdout.write(stats.toString(outputOptions) + "\n");
+    
+    process.stdout.write(stats.toString(conf.webpack.stats) + "\n");
 
     if(stats.hasErrors()) {
       process.on("exit", function() {
