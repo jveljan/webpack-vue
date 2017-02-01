@@ -30,8 +30,6 @@ export default {
     gotoPage(page) {
       if(page > 0 && page <= this.totalPages) {
         this.$emit('change-page', page);
-      } else {
-        console.log('invalid page, ignoring ... ', page);
       }
     } 
   }
