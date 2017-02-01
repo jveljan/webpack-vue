@@ -4,14 +4,15 @@ const fs = require('fs-extra');
 const paths = require('../conf').path;
 
 function copyStatic() {
+  console.log(`copy ${src} to ${dest} ...`);
   const src = path.join(paths.src, 'assets/static');
   const dest = path.join(paths.dist, 'assets/static');
-  console.log(`copy ${src} to ${dest}`); 
   fs.copySync(src, dest);
 }
 
 
 function compile() {
+  console.log(`webpack compile ...`);
   function compilerCallback(err, stats) {
     if(err) {
       console.error(err.stack || err);
@@ -34,12 +35,12 @@ function compile() {
 
   const cfg = require('../webpack/webpack-dist.conf');
   var compiler = webpack(cfg);
-
-
-  var ProgressPlugin = require("webpack/lib/ProgressPlugin");
-		compiler.apply(new ProgressPlugin({
-			profile: true
-		}));
+  
+  // can be added in config
+  // var ProgressPlugin = require("webpack/lib/ProgressPlugin");
+	// 	compiler.apply(new ProgressPlugin({
+	// 		profile: true
+	// 	}));
 
   compiler.run(compilerCallback);
 }
@@ -49,7 +50,6 @@ console.log(`clean ${paths.dist}`);
 fs.emptyDir(paths.dist, function() {
   copyStatic();
   compile();
-  console.log('done!');
 });
 
 

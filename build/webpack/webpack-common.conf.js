@@ -14,8 +14,8 @@ module.exports = {
   },
   plugins: [
     compose.plugin('occurrence-order'),
-    //compose.plugin('no-errors'),
-    compose.plugin('html', paths.src + '/index.html')
+    compose.plugin('html', paths.src + '/index.html'),
+    compose.plugin('progress')
   ],
   resolve: {
     extensions: ['.js', '.ts'],

@@ -14,7 +14,9 @@ module.exports = merge(base, {
     ]
   },
   plugins: [
-    compose.plugin('define-prod-env'),
+    compose.plugin('define', {
+      'process.env.NODE_ENV': '"production"'
+    }),
     compose.plugin('uglify-js'),
     compose.plugin('content-hash-css'),
     compose.plugin('vendor-js')
