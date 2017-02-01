@@ -5,9 +5,9 @@ const conf = require('../conf');
 const paths = conf.path;
 
 function copyStatic() {
-  console.log(`copy ${src} to ${dest} ...`);
   const src = path.join(paths.src, 'assets/static');
   const dest = path.join(paths.dist, 'assets/static');
+  console.log(`copy ${src} to ${dest} ...`);
   fs.copySync(src, dest);
 }
 
