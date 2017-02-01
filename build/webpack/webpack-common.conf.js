@@ -1,5 +1,3 @@
-
-const autoprefixer = require('autoprefixer');
 const paths = require('../conf').path;
 const compose = require('./compose')();
 
@@ -19,7 +17,6 @@ module.exports = {
     //compose.plugin('no-errors'),
     compose.plugin('html', paths.src + '/index.html')
   ],
-  //postcss: () => [autoprefixer],
   resolve: {
     extensions: ['.js', '.ts'],
     alias: {
