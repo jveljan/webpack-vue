@@ -6,8 +6,20 @@ module.exports = {
     dist: 'dist',
     root: path.resolve(__dirname, '../')
   },
+  webpack: {
+    stats: {
+      colors: true,
+      chunks: false
+    }
+  },
   proxy: {
-    '/api/': 'http://proxy.url/api'
+    '/api/': { // see https://github.com/chimurai/http-proxy-middleware#options
+      target: 'https://jsonplaceholder.typicode.com',
+      changeOrigin: true,
+      pathRewrite: function (path, req) {
+        return path.replace('/api', '/');
+      }
+    }
   },
   dev: {
     port: 3344,

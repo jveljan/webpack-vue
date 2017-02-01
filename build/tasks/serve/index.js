@@ -15,17 +15,21 @@ if(conf.dev.enableHotReload) {
   app.use(hr.hotMiddleware(compiler));
 }
 
-var devMiddleware = require('webpack-dev-middleware')(compiler, {
+const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: '/',
-  stats: {
-    colors: true,
-    chunks: false
-  }
+  stats: conf.webpack.stats
 });
 // serve webpack bundle output
 app.use(devMiddleware)
 
-// TODO: proxy middleware
+if(conf.proxy) {
+  // proxy middleware
+  const proxy = require('http-proxy-middleware');
+  for(var k in conf.proxy) {
+    console.log('registering proxy: ', k, ' => ', conf.proxy[k]);
+    app.use(k, proxy(conf.proxy[k]));
+  }
+}
 
 
 app.use('/assets/static', express.static(`${conf.path.root}/${conf.path.src}/assets/static`));
