@@ -27,6 +27,7 @@ Vue.mixin({
 // 4. Create and mount root instance.
 // Make sure to inject the router.
 // Route components will be rendered inside <router-view>.
+require('./app.less');
 new Vue({
   router,
   template: require('./app.html')
