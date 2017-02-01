@@ -2,10 +2,8 @@ const path = require('path');
 
 module.exports = {
   path: {
-    tmp: '.tmp',
     src: 'src',
     dist: 'dist',
-    assets: 'assets',
     root: path.resolve(__dirname, '../')
   },
   proxy: {
