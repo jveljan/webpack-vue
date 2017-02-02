@@ -1,11 +1,11 @@
-<div class="layout">
+<div class="h100 layout">
   <navbar></navbar>
-  <div class="container-fluid">
-    <div class="row">
+  <div class="h100 container-fluid">
+    <div class="row h100">
       <div v-if="$slots['sidebar']" class="col-sm-3 col-md-2 sidebar">
         <slot name="sidebar"></slot>
       </div>
-      <div :class="[mainClass]" class="main">
+      <div :class="[mainClass]" class="main h100">
         <slot></slot>
       </div>
     </div>

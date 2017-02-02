@@ -53,7 +53,7 @@ export default [{
   {
     path: '/profile',
     component: {
-      template: '<layout> Profile </layout>'
+      template: '<layout> <sidebar area="dashboard" slot="sidebar"></sidebar> Profile </layout>'
     },
     beforeEnter: requireAuth
   },
