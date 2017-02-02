@@ -5,7 +5,7 @@ const merge = require('webpack-merge');
 const base = require('./webpack-common.conf');
 module.exports = merge(base, {
   module: {
-    loaders: [
+    rules: [
       compose.loader('styles-dev')
     ]
   }

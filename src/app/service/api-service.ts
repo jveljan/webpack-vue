@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class ExampleApiService {
-  getPosts() {
+  public getPosts() {
     return axios.get('api/posts');
   }
 }

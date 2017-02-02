@@ -9,7 +9,7 @@ module.exports = merge(base, {
     filename: '[name]-[hash:7].js'
   },
   module: {
-    loaders: [
+    rules: [
       compose.loader('styles-prod')
     ]
   },

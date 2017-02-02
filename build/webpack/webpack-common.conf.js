@@ -3,7 +3,7 @@ const compose = require('./compose')();
 
 module.exports = {
   module: {
-    loaders: [
+    rules: [
       compose.loader('json'),
       compose.loader('es2015'), // *.js -> eslint + babel
       compose.loader('ts'),     // *.ts -> tslint + typescript
