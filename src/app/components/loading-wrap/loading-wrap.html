@@ -1,5 +1,8 @@
 <div class="loading-wrap">
   <div class="error" v-show="err">{{err}}</div>
-  <div class="loading" v-show="indicator"> !!icon!! loading ... </div>
+  <div class="loading" v-show="indicator">
+    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+    Loading ...
+  </div>
   <slot v-if="!indicator"></slot>
 </div>
