@@ -1,5 +1,5 @@
 <div class="loading-wrap">
   <div class="error" v-show="err">{{err}}</div>
   <div class="loading" v-show="indicator"> !!icon!! loading ... </div>
-  <slot v-show="!indicator"></slot>
+  <slot v-if="!indicator"></slot>
 </div>

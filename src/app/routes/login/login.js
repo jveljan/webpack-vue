@@ -8,19 +8,22 @@ export default {
     return {
       email: 'joe@example.com',
       pass: '',
-      error: false
+      error: false,
+      loading: false
     }
   },
 
   methods: {
     login () {
+      this.loading = true;
       auth.login(this.email, this.pass, loggedIn => {
-        if (!loggedIn) {
-          this.error = true
+        if(!loggedIn) {
+          this.error = true;
         } else {
-          this.$router.replace(this.$route.query.redirect || '/')
+          this.$router.replace(this.$route.query.redirect || '/');
         }
-      })
+        this.loading = false;
+      });
     }
   }
 }

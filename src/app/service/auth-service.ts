@@ -15,7 +15,7 @@ class ExampleAuthService {
       if (resp.authenticated) {
         localStorage.setItem('token', resp.token);
       }
-      callback.call(resp.authenticated);
+      callback(resp.authenticated);
     });
   }
 

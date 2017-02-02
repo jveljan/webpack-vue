@@ -24,7 +24,7 @@ class ExampleApiService {
           authenticated: false,
         });
       }
-    }, 50);
+    }, 500);
   }
 }
 export default new ExampleApiService();
