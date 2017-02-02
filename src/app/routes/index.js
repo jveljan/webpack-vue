@@ -3,6 +3,7 @@ import dashboardReports from './dashboard/reports/reports';
 import settings from './settings/settings';
 import login from './login/login';
 import auth from '../service/auth-service';
+import postDetails from './post/post-details';
 
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {
@@ -48,6 +49,11 @@ export default [{
   {
     path: '/settings',
     component: settings,
+    beforeEnter: requireAuth
+  },
+  {
+    path:'/post/:id',
+    component: postDetails,
     beforeEnter: requireAuth
   },
   {

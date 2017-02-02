@@ -5,13 +5,13 @@ export default {
   template: require('./dashboard.html'),
   created() {
     api.getPosts()
-      .then( resp => {
+      .then( posts => {
+        this.posts = posts;
         this.loading = false;
-        this.posts = resp.data;
       })
       .catch(err => {
-        this.loading = false;
         this.err = err;
+        this.loading = false;
       });
   },
   data() {

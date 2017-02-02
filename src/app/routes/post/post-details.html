@@ -1,0 +1,14 @@
+<layout>
+  <sidebar area="dashboard" slot="sidebar"></sidebar>
+
+  <loading-wrap :indicator="loading" :err="err">
+    <div v-if="res">
+      <h1>{{res.post.id}} - {{res.post.title}} </h1>
+      <div> {{res.post.body}} </div>
+      <ul>
+        <li v-for="c in res.comments">{{c}}</li>
+      </ul>
+    </div>
+  </loading-wrap>
+  <a href="#/dashboard">Back to dashboard</a>
+</layout>
