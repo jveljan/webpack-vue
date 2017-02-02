@@ -1,0 +1,7 @@
+<div class="loading-wrap">
+  <div v-show="err">{{err}}</div>
+  <div class="loading" v-show="indicator"> !!icon!! loading ... </div>
+  <div class="loading" v-show="!indicator">
+    <slot></slot>
+  </div>
+</div>

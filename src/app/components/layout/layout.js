@@ -3,6 +3,7 @@ require('./layout.less');
 import Navbar from 'app/components/navbar/navbar';
 
 export default {
+  name: 'layout',
   template: require('./layout.html'),
   computed: {
     mainClass() {

@@ -1,4 +1,5 @@
 export default {
+  name: 'sidebar',
   template: require('./sidebar.html'),
   props: {
     area: {

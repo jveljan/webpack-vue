@@ -1,17 +1,24 @@
-import egts from '../../service/example-ts-service';
+import api from '../../service/api-service';
 
 require('./dashboard.less');
-
 export default {
   template: require('./dashboard.html'),
+  created() {
+    api.getPosts()
+      .then( resp => {
+        this.loading = false;
+        this.posts = resp.data;
+      })
+      .catch(err => {
+        this.loading = false;
+        this.err = err;
+      });
+  },
   data() {
     return {
-      name: 'Mike'
-    }
-  },
-  computed: {
-    sayHello() {
-      return egts.sayHallo(this.name)
+      loading: true,
+      err: null,
+      posts: null
     }
   }
 }

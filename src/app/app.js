@@ -15,12 +15,15 @@ const router = new VueRouter({
 })
 
 // register global components in a mixin...
-import Layout from 'app/components/layout/layout';
-import Sidebar from 'app/components/sidebar/sidebar';
+import layout from 'app/components/layout/layout';
+import sidebar from 'app/components/sidebar/sidebar';
+import loadingWrap from 'app/components/loading-wrap/loading-wrap';
+
 Vue.mixin({
   components: {
-    layout: Layout,
-    sidebar: Sidebar
+    layout,
+    sidebar,
+    loadingWrap
   }
 });
 
