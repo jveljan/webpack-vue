@@ -1,31 +1,21 @@
 /* globals localStorage */
-function pretendRequest(email, pass, cb) {
-  setTimeout(() => {
-    if (email === 'joe@example.com' && pass === 'pass') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7),
-      });
-    } else {
-      cb({ authenticated: false });
-    }
-  }, 50);
+import api from './api-service';
+
+interface IBooleanArgCallback {
+  (arg: Boolean): void;
 }
 
 class ExampleAuthService {
-  public login(email: String, pass: String, callback) {
+  public login(email: string, pass: string, callback: IBooleanArgCallback) {
     if (this.loggedIn()) {
       callback(true);
       return;
     }
-
-    pretendRequest(email, pass, (res) => {
-      if (res.authenticated) {
-        localStorage.setItem('token', res.token);
-        callback(true);
-      } else {
-        callback(false);
+    api.doLogin(email, pass, (resp) => {
+      if (resp.authenticated) {
+        localStorage.setItem('token', resp.token);
       }
+      callback.call(resp.authenticated);
     });
   }
 
