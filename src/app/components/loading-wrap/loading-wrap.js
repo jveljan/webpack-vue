@@ -1,3 +1,4 @@
+require('./loading-wrap.less');
 export default {
   name: 'loading-wrap',
   template: require('./loading-wrap.html'),

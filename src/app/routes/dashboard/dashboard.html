@@ -3,7 +3,7 @@
 
   <loading-wrap :indicator="loading" :err="err">
     <div class="post" v-for="p in posts">
-        <a href="#">{{p.title}}</a>
+        <a :href="pLink(p)">{{p.title}}</a>
         <div>{{p.body}}</div>
       </div>
   </loading-wrap>

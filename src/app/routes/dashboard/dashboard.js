@@ -20,5 +20,10 @@ export default {
       err: null,
       posts: null
     }
+  },
+  methods: {
+    pLink(p) {
+      return `#/post/${p.id}`;
+    }
   }
 }
