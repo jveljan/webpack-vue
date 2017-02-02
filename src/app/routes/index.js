@@ -2,7 +2,7 @@ import dashboard from './dashboard/dashboard';
 import dashboardReports from './dashboard/reports/reports';
 import settings from './settings/settings';
 import login from './login/login';
-import auth from 'app/service/auth';
+import auth from '../service/auth-service';
 
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {

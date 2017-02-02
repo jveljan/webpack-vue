@@ -1,5 +1,5 @@
 require('./login.less');
-import auth from 'app/service/auth';
+import auth from '../../service/auth-service';
 
 export default {
   template: require('./login.html'),
