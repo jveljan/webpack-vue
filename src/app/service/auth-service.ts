@@ -1,12 +1,8 @@
 /* globals localStorage */
 import api from './api-service';
 
-interface IBooleanArgCallback {
-  (arg: Boolean): void;
-}
-
 class ExampleAuthService {
-  public login(email: string, pass: string, callback: IBooleanArgCallback) {
+  public login(email: string, pass: string, callback: (loggedIn: boolean) => void) {
     if (this.loggedIn()) {
       callback(true);
       return;
@@ -19,11 +15,11 @@ class ExampleAuthService {
     });
   }
 
-  public loggedIn(): Boolean {
+  public loggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  public getToken(): String {
+  public getToken(): string {
     return localStorage.getItem('token');
   }
 

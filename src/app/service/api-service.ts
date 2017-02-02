@@ -1,18 +1,15 @@
 import axios from 'axios';
 
 interface ILoginResp {
-  authenticated: Boolean;
+  authenticated: boolean;
   token?: string;
-}
-interface ILoginCallback {
-  (resp: ILoginResp): void;
 }
 
 class ExampleApiService {
   public getPosts() {
     return axios.get('api/posts');
   }
-  public doLogin(user: string, pass: string, callback: ILoginCallback) {
+  public doLogin(user: string, pass: string, callback: (resp: ILoginResp) => void) {
     setTimeout( () => {
       if (user === 'joe@example.com' && pass === 'pass') {
         callback({
